@@ -24,7 +24,12 @@ deploy:
   image: docker:latest
   services:
     - docker:dind
+  variables:
+    DOCKER_TLS_CERTDIR: "/certs"
   stage: deploy
+  before_script:
+    - apk add curl nodejs npm
+    - npm install -g heroku
   dependencies:
     - build
     - test
@@ -32,5 +37,6 @@ deploy:
   - docker build -f Dockerfile --iidfile imageid.txt -t registry.heroku.com/gymshop-frontend .
   - docker login -u $HEROKU_USER -p $HEROKU_API_KEY registry.heroku.com
   - docker push registry.heroku.com/gymshop-frontend
+  - heroku container:release web --app gymshopapi-product-service
   only:
     - master
