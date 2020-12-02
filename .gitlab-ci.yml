@@ -19,10 +19,13 @@ test:
     - echo "Testing App"
 
 deploy:
-  image: node:12.16.1
+  image: docker:latest
+  services:
+    - docker:dind
   stage: deploy
   script:
-    - git push https://$HEROKU_USER:$HEROKU_API_KEY@git.heroku.com/gymshop-frontend.git HEAD:master
-    - echo "Deployed to production server"
+  - docker build -f Dockerfile --iidfile imageid.txt -t registry.heroku.com/gymshopapi-product-service .
+  - docker login -u $HEROKU_USER -p $HEROKU_API_KEY registry.heroku.com
+  - docker push registry.heroku.com/gymshopapi-product-service
   only:
     - master
