@@ -10,7 +10,7 @@ class Catalog extends Component {
 
     componentDidMount() {
         this.setState({ loading: true })
-        fetch('https://gymshopapi-product-service.herokuapp.com/products')
+        fetch('https://cors-anywhere.herokuapp.com/https://gymshopapi-product-service.herokuapp.com/products')
             .then(data => data.json())
             .then(data => this.setState({ data, loading: false }));
     }

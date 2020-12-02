@@ -37,5 +37,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://gymshopapi-product-service.herokuapp.com/"
+  "proxy": "https://cors-anywhere.herokuapp.com/https://gymshopapi-product-service.herokuapp.com/products"
 }
