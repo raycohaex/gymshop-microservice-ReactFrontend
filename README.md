@@ -2,6 +2,14 @@
 
 Front-end for gymshop api.
 
+## Table of contents
+* [About this project](#about-this-project)
+* [Technologies](#technologies)
+* [Demo](#demo)
+* [Setup](#setup)
+* [License](#License)
+
+
 ## Available Scripts
 
 In the project directory, you can run:
