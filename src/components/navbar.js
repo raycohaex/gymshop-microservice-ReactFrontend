@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import {
-    BrowserRouter as Router,
-    Link,
-    Route
-  } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
+import axios from 'axios';
+import { setup } from 'axios-cache-adapter'
 
 function ListItemLink({ to, navName }) {
     return (
@@ -19,6 +17,35 @@ function ListItemLink({ to, navName }) {
   }
 
 class NavbarDefault extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            categories: []
+        }
+    }
+
+    componentDidMount() {
+        const cache = setup({
+            maxAge: 20 * 60 * 1000 // 20min
+        })
+        
+        const api = axios.create({
+            adapter: cache.adapter
+        })
+        
+        api({
+            url: `${process.env.REACT_APP_PRODUCT_API_BASE_URL}categories`,
+            method: 'get'
+        }).then(async (response) => {
+          this.setState({
+              categories: response.data
+          })
+        })
+    }
+
+    componentDidUpdate() {
+    }
+
   render() {
     return (
         <header className="shadow-sm">
@@ -38,9 +65,11 @@ class NavbarDefault extends Component {
                             Clothing
                             </a>
                             <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a className="dropdown-item" href="#">Men</a>
-                            <a className="dropdown-item" href="#">Women</a>
-                            <a className="dropdown-item" href="#">Unisex</a>
+                                <ul>
+                                <ListItemLink to="/men" navName="Men"/>
+                                <ListItemLink to="/women" navName="Women"/>
+                                <ListItemLink to="/unisex" navName="Unisex"/>
+                                </ul>
                             </div>
                         </li>
                     </ul>
