@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link, Route } from "react-router-dom";
 import axios from 'axios';
 import { setup } from 'axios-cache-adapter'
+import NavbarSubmenu from './navbarSubmenu';
 
 function ListItemLink({ to, navName }) {
     return (
@@ -20,31 +21,20 @@ class NavbarDefault extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            subcategoryname: "",
             categories: []
         }
     }
 
     componentDidMount() {
-        const cache = setup({
-            maxAge: 20 * 60 * 1000 // 20min
-        })
-        
-        const api = axios.create({
-            adapter: cache.adapter
-        })
-        
-        api({
-            url: `${process.env.REACT_APP_PRODUCT_API_BASE_URL}categories`,
-            method: 'get'
-        }).then(async (response) => {
-          this.setState({
-              categories: response.data
-          })
-        })
     }
 
     componentDidUpdate() {
     }
+
+
+
+
 
   render() {
     return (
@@ -93,27 +83,12 @@ class NavbarDefault extends Component {
                     </ul>
                 </div>
             </nav>
-            <nav className="navbar navbar-expand-md navbar-light bg-light py-1">
-                <div className="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
-                    <ul className="navbar-nav mr-auto">
-                        <li className="nav-item active">
-                            <a className="nav-link" href="#">Whey</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#">Casein</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#">Creatine</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#">Pre-workout</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#">Post-workout</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+            {this.props.subcategoryname ? (
+                <NavbarSubmenu category={this.props.subcategoryname}/>
+            ) : (
+                <div style={{display: 'none'}}></div>
+            )}
+            
         </header>
     );
   }

@@ -1,7 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
 import Catalog from './components/catalog';
-import NavbarDefault from './components/navbar';
 import Category from './components/pages/Category';
 import Featured from './components/pages/Featured';
 import Error from './components/pages/Error';
@@ -16,11 +15,10 @@ import {
 function App() {
   return (
     <main className="App">
-       <NavbarDefault/>
        <Switch>
+          <Route path="/" component={Featured} exact />
           <Route path="/product/:id?" component={Product} />
-          <Route path="/featured/" component={Featured} />
-          <Route path="/:mainCategory/:subCategory?" component={Category} />
+          <Route path="/:mainCategory/:subCategory?" render={(props) => <Category {...props}/> } />
           <Route component={Error} />
         </Switch>
        
