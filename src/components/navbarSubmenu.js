@@ -62,7 +62,7 @@ class NavbarSubmenu extends Component {
 
     render() {
         return (
-            <nav className="navbar navbar-expand-md navbar-light bg-light py-1">
+            <nav className="navbar navbar-expand-md navbar-light py-1">
                 <div className="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
                     <ul className="navbar-nav mr-auto">
                         {(this.state.categories && this.state.categories.length > 0) && this.state.categories.map((_) =>
