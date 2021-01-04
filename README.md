@@ -4,13 +4,15 @@ Front-end for gymshop api.
 
 ## Table of contents
 * [About this project](#about-this-project)
-* [Technologies](#technologies)
-* [Demo](#demo)
-* [Setup](#setup)
+* [Wiki](#wiki)
+* [Available scrips](#available-scripts)
 * [License](#License)
 
+# Wiki
 
-## Available Scripts
+There's a detailed documentation of UX choices, documentation and available endpoints at the [Git wiki](https://git.fhict.nl/I426114/gymshopapi-frontend/-/wikis/Intro).
+
+# Available Scripts
 
 In the project directory, you can run:
 
@@ -47,6 +49,4 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Wiki
 
-There's a detailed documentation of UX choices and available endpoints at the [Git wiki](https://git.fhict.nl/I426114/gymshopapi-frontend/-/wikis/Intro).
