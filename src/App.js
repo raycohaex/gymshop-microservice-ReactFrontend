@@ -18,9 +18,10 @@ function App() {
     <main className="App">
        <Switch>
           <Route path="/" component={Featured} exact />
-          <Route path="/product/:id?" component={Product} />
-          <Route path="/:mainCategory/:subCategory" render={(props) => <Category {...props}/> } />
-          <Route path="/:mainCategory" render={(props) => <FeaturedCategory {...props}/> } />
+          <Route path="/product/:id/:productTitle?" render={(props) => <Product {...props}/> } />
+          <Route path="/catalog/:mainCategory/:subCategory" render={(props) => <Category {...props}/> } />
+          <Route path="/catalog/:mainCategory" render={(props) => <FeaturedCategory {...props}/> } />
+          <Route path="/catalog" component={Featured} />
           <Route component={Error} />
         </Switch>
        

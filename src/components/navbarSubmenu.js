@@ -3,12 +3,12 @@ import axios from 'axios';
 import { setup } from 'axios-cache-adapter'
 import { Link, Route } from "react-router-dom";
 
-function ListItemLink({ to, navName }) {
+function ListItemLink({ to, navName, useActive }) {
     return (
       <Route
         path={to}
         children={({ match }) => (
-          <li className={match ? "active" : ""}>
+          <li className={match || useActive == navName ? "active" : ""}>
             <Link className="nav-link" to={to}>{navName}</Link>
           </li>
         )}
@@ -65,8 +65,8 @@ class NavbarSubmenu extends Component {
             <nav className="navbar navbar-expand-md navbar-light py-1">
                 <div className="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
                     <ul className="navbar-nav mr-auto">
-                        {(this.state.categories && this.state.categories.length > 0) && this.state.categories.map((_) =>
-                            <ListItemLink to={"/" + this.state.categoryname + "/" + _.name} navName={_.name}/>
+                        {(this.state.categories && this.state.categories.length > 0) && this.state.categories.map((_, index) =>
+                            <ListItemLink useActive={this.props.useActive} key={index} to={"/catalog/" + this.state.categoryname + "/" + _.name} navName={_.name}/>
                         )}
                     </ul>
                 </div>

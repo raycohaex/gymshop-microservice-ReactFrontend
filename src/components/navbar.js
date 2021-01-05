@@ -48,17 +48,17 @@ class NavbarDefault extends Component {
             <nav className="navbar navbar-expand-md navbar-light py-4">
                 <div className="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
                     <ul className="navbar-nav mr-auto">
-                    <ListItemLink to="/supplements" navName="Supplements"/>
-                    <ListItemLink to="/accessories" navName="Accessories"/>
+                    <ListItemLink to="/catalog/supplements" navName="Supplements"/>
+                    <ListItemLink to="/catalog/accessories" navName="Accessories"/>
                         <li className="nav-item dropdown">
                             <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Clothing
                             </a>
                             <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <ul>
-                                <ListItemLink to="/men" navName="Men"/>
-                                <ListItemLink to="/women" navName="Women"/>
-                                <ListItemLink to="/unisex" navName="Unisex"/>
+                                <ListItemLink to="/catalog/men" navName="Men"/>
+                                <ListItemLink to="/catalog/women" navName="Women"/>
+                                <ListItemLink to="/catalog/unisex" navName="Unisex"/>
                                 </ul>
                             </div>
                         </li>
@@ -84,7 +84,7 @@ class NavbarDefault extends Component {
                 </div>
             </nav>
             {this.props.subcategoryname ? (
-                <NavbarSubmenu category={this.props.subcategoryname}/>
+                <NavbarSubmenu category={this.props.subcategoryname} useActive={this.props.useActive}/>
             ) : (
                 <div style={{display: 'none'}}></div>
             )}
