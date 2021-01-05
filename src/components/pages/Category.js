@@ -60,6 +60,8 @@ class Category extends Component {
     }
 
     render() {
+        let mainCategory = this.props.match.params.mainCategory;
+        let subCategory = this.props.match.params.subCategory
         if(this.state.containsErrors == true) {
             return (
                 <div>
@@ -70,21 +72,35 @@ class Category extends Component {
         }
         return (
             <main>
-                <NavbarDefault subcategoryname={this.props.match.params.mainCategory}/>
-                <div className="container-fluid">
-                    <h1>{this.state.catalog.name}</h1>
-                    <div className="row">
-                    {this.state.catalog.products?.map((product) =>
-                        <ProductBase 
-                        key={product.id}
-                        id={product.id}
-                        name={product.name} 
-                        description={product.description} 
-                        price={product.price}
-                        mainCategory={this.props.match.params.mainCategory}
-                        subCategory={this.props.match.params.subCategory}
-                        />
-                    )}
+                <NavbarDefault subcategoryname={mainCategory}/>
+                <div className="container-fluid mt-3">
+                    <nav aria-label="breadcrumb">
+                        <ol className="breadcrumb m-0 pb-0">
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item"><a href={"/catalog/" + mainCategory}>{mainCategory}</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">{subCategory}</li>
+                        </ol>
+                    </nav>
+                    <h1 className="text-left font-weight-bold h1 pl-3">{this.state.catalog.name}</h1>
+                    <div className="row mt-5">
+                        <div className="col-3 d-flex flex-column align-items-start p-4">
+                            <span className="h4 text-left">Filters</span>
+                        </div>
+                        <div className="col-12 col-md-9">
+                            <div className="row">
+                            {this.state.catalog.products?.map((product) =>
+                                <ProductBase 
+                                key={product.id}
+                                id={product.id}
+                                name={product.name} 
+                                description={product.description} 
+                                price={product.price}
+                                mainCategory={this.props.match.params.mainCategory}
+                                subCategory={this.props.match.params.subCategory}
+                                />
+                            )}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </main>
