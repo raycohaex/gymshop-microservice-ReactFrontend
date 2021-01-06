@@ -5,12 +5,31 @@ Front-end for gymshop api.
 ## Table of contents
 * [About this project](#about-this-project)
 * [Wiki](#wiki)
+* [Technologies](#technologies)
+* [Demo](#demo)
 * [Available scrips](#available-scripts)
 * [License](#License)
 
 # Wiki
 
 There's a detailed documentation of UX choices, documentation and available endpoints at the [Git wiki](https://git.fhict.nl/I426114/gymshopapi-frontend/-/wikis/Intro).
+
+# Technologies
+Project is created with:
+
+Netcoreapp: 3.1
+
+Entity framework: 3.1.9
+MOQ: 4.14.7
+Xunit: 2.4.0
+
+
+SonarQube: 8.5.1
+Docker 19.*
+
+
+# Demo
+https://gymshop-frontend.herokuapp.com/
 
 # Available Scripts
 
