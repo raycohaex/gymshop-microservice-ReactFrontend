@@ -18,7 +18,7 @@ test:
   dependencies:
     - build
   script:
-    - echo "Testing App"
+    - npm test
 
 deploy:
   image: docker:latest
