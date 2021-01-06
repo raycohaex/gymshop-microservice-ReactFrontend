@@ -18,6 +18,8 @@ test:
   dependencies:
     - build
   script:
+    - npm install
+    - npm build
     - npm test
 
 deploy:
