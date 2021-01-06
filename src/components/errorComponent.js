@@ -6,7 +6,20 @@ class ErrorComponent extends Component {
         this.state = {
             errorTitle: "404 - Not found",
             errorMessage: "It seems like you got a little lost."
+            }
         }
+
+        componentDidMount() {
+            if(this.props.errorTitle){
+                this.setState({
+                    errorTitle: this.props.errorTitle
+                })
+            }
+            if(this.props.errorMessage){
+                this.setState({
+                    errorMessage: this.props.errorMessage
+                })
+            }
         }
 
     render() {
@@ -15,8 +28,8 @@ class ErrorComponent extends Component {
                 <div className="container">
                     <div className="row align-items-center">
                         <div className="col-12 col-md-6 d-flex flex-column align-items-start">
-                            <h1 className="display-4 font-weight-bold text-left">{this.state.errorTitle}</h1>
-                            <span>{this.state.errorMessage}</span>
+                            <h1 id="errorTitle" className="display-4 font-weight-bold text-left">{this.state.errorTitle}</h1>
+                            <span id="errorDescription">{this.state.errorMessage}</span>
                             <a href="/" className="btn btn-primary mr-auto mt-3">Go back</a>
                         </div>
                         <div className="col-12 col-md-6">

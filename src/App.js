@@ -16,6 +16,7 @@ import {
 function App() {
   return (
     <main className="App">
+      <Router>
        <Switch>
           <Route path="/" component={Featured} exact />
           <Route path="/product/:id/:productTitle?" render={(props) => <Product {...props}/> } />
@@ -24,7 +25,7 @@ function App() {
           <Route path="/catalog" component={Featured} />
           <Route component={Error} />
         </Switch>
-       
+      </Router>
     </main>
   );
 }
