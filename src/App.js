@@ -7,6 +7,8 @@ import Featured from './components/pages/Featured';
 import Error from './components/pages/Error';
 import Product from './components/pages/Product';
 import AdminMain from './components/pages/admin/AdminMain';
+import AdminProduct from './components/pages/admin/AdminProduct';
+import AdminCategory from './components/pages/admin/AdminCategory';
 import {
   BrowserRouter as Router,
   Switch,
@@ -29,6 +31,8 @@ function App() {
           {/* user protected routes */}
 
           {/* admin protected routes */}
+          <Route path="/admin/products" render={(props) => <AdminProduct {...props}/> } />
+          <Route path="/admin/categories" render={(props) => <AdminCategory {...props}/> } />
           <Route path="/admin" render={(props) => <AdminMain {...props}/> } />
 
           <Route component={Error} />

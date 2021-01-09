@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Keycloak from 'keycloak-js';
+import UserInfo from './UserInfo';
+import AdminNavbar from './admincomponents/adminNavbar';
 
 class AdminMain extends Component {
 
@@ -9,23 +11,35 @@ class AdminMain extends Component {
       }
     
       componentDidMount() {
-        const keycloak = Keycloak('./keycloak.json');
-        keycloak.init({onLoad: 'login-required'}).then(authenticated => {
-          this.setState({ keycloak: keycloak, authenticated: authenticated })
-        })
+        if(this.state.keycloak == null){
+          const keycloak = Keycloak('/keycloak.json');
+          keycloak.init({onLoad: 'login-required'}).then(authenticated => {
+              this.setState({ keycloak: keycloak, authenticated: authenticated })
+          })
+      }
       }
     
       render() {
-        if (this.state.keycloak) {
-          if (this.state.authenticated) return (
-            <div>
-              <p>This is a Keycloak-secured component of your application. You shouldn't be able
-              to see this unless you've authenticated with Keycloak.</p>
+        if(this.state.keycloak) {
+          if(this.state.authenticated) return (
+            <div className="w-100 d-flex" style={{height:'100vh'}}>
+              <AdminNavbar />
+              <div style={{flex: "1 0"}}>
+              <UserInfo keycloak={this.state.keycloak} />
+              </div>
             </div>
-          ); else return (<div>Unable to authenticate!</div>)
+          ); else return (<div>Something went wrong!</div>)
         }
         return (
-          <div>Initializing Keycloak...</div>
+          <div id="full-screen-load">
+            <div id="full-screen-load-animation">
+              <div id="load1"></div>
+              <div id="load2"></div>
+              <div id="load3"></div>
+              <div id="load4"></div>
+            </div>
+            <span className="h6 text-bold">Loading</span>
+          </div>
         );
       }
     }
