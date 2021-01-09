@@ -1,0 +1,13 @@
+{
+  "realm": "Gymshop",
+  "auth-server-url": "https://gymshop-account-service.herokuapp.com/auth/",
+  "ssl-required": "external",
+  "resource": "gymshop-login",
+  "verify-token-audience": true,
+  "enable-cors" : true,
+  "credentials": {
+    "secret": "8f598a96-dee7-4a3f-ad33-edc21dbb605e"
+  },
+  "confidential-port": 0,
+  "policy-enforcer": {}
+}

@@ -6,6 +6,7 @@ import FeaturedCategory from './components/pages/FeaturedCategory';
 import Featured from './components/pages/Featured';
 import Error from './components/pages/Error';
 import Product from './components/pages/Product';
+import AdminMain from './components/pages/admin/AdminMain';
 import {
   BrowserRouter as Router,
   Switch,
@@ -18,11 +19,18 @@ function App() {
     <main className="App">
       <Router>
        <Switch>
+          {/* public routes */}
           <Route path="/" component={Featured} exact />
           <Route path="/product/:id/:productTitle?" render={(props) => <Product {...props}/> } />
           <Route path="/catalog/:mainCategory/:subCategory" render={(props) => <Category {...props}/> } />
           <Route path="/catalog/:mainCategory" render={(props) => <FeaturedCategory {...props}/> } />
           <Route path="/catalog" component={Featured} />
+
+          {/* user protected routes */}
+
+          {/* admin protected routes */}
+          <Route path="/admin" render={(props) => <AdminMain {...props}/> } />
+
           <Route component={Error} />
         </Switch>
       </Router>
