@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Keycloak from 'keycloak-js';
 import UserInfo from './UserInfo';
 import AdminNavbar from './admincomponents/adminNavbar';
+import LoadingAnimation from './admincomponents/loadingAnimation';
 
 class AdminCategory extends Component {
 
@@ -38,15 +39,7 @@ class AdminCategory extends Component {
             <AdminNavbar />
             <div style={{flex: "1 0"}}>
             
-                <div id="full-screen-load">
-                <div id="full-screen-load-animation">
-                <div id="load1"></div>
-                <div id="load2"></div>
-                <div id="load3"></div>
-                <div id="load4"></div>
-                </div>
-                    <span className="h6 text-bold">Loading</span>
-                </div>
+              <LoadingAnimation/>
 
             </div>
             </div>
