@@ -11,7 +11,7 @@ class AdminProductOverview extends Component {
     }
 
     async getData() {
-      const res = await axios.get('https://localhost:5001/products/all');
+      const res = await axios.get(`${process.env.REACT_APP_PRODUCT_API_BASE_URL}products/all`);
       return await res;
     }
 
@@ -30,14 +30,14 @@ class AdminProductOverview extends Component {
         return Object.keys(products).map((item, index) => {
             let inStock = products[item].isAvailable;
             return(
-              <tr>
+              <tr key={index}>
               <td scope="row" id={products[item].id}>{products[item].id}</td>
               <td>{products[item].name}</td>
               <td>{products[item].description}</td>
               <td>{products[item].price}</td>
               <td>
-              <div class="checkbox">
-                <label><input type="checkbox" value="" checked={inStock} />Available</label>
+              <div className="checkbox">
+                <label><input type="checkbox" value="" defaultChecked={inStock} disabled/></label>
               </div>
               </td>
               <td>
@@ -71,8 +71,6 @@ class AdminProductOverview extends Component {
                       </tr>
                     </thead>
                     <tbody>
-
-                    {console.log(this.state.products.length)}
                       {(this.state.products.length > 0) ?
                         this.renderRows(this.state.products)
                         : <tr><td>loading</td></tr>

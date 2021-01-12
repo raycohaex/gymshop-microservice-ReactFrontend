@@ -63,7 +63,7 @@ class AdminProductAdd extends Component {
         };
         
         axios.post( 
-          'https://gymshopapi-product-service.herokuapp.com/products',
+          `${process.env.REACT_APP_PRODUCT_API_BASE_URL}products`,
           bodyParameters,
           config
         )

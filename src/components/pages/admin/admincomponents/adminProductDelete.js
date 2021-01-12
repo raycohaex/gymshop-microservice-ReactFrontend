@@ -46,7 +46,7 @@ class AdminProductDelete extends Component {
             headers: { Authorization: `Bearer ${this.state.token}` }
         };
         axios.delete( 
-            `https://localhost:5001/products/${productid}`,
+            `${process.env.REACT_APP_PRODUCT_API_BASE_URL}products/${productid}`,
             config
           )
           .then((response) =>

@@ -60,7 +60,6 @@ class AdminProduct extends Component {
               <AdminNavbar />
               <div style={{flex: "1 0"}}>
               <div className="container mt-5">
-                {console.log(this.state.keycloak)}
                 {this.renderSwitch(this.state.actionPage)}
                 
               </div>
